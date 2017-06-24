@@ -2,7 +2,9 @@ package com.herokuapp.springoflife.model;
 
 class Alive {
 
-  static boolean isAlive(int posX, int posY) {
-    return (Board.array2d()[posX][posY] == 1);
+  Board board = new Board();
+
+  boolean isAlive(int posX, int posY) {
+    return (board.array2d()[posX][posY] == 1);
   }
 }

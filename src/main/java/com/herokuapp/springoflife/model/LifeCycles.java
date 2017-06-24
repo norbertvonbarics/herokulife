@@ -1,7 +1,5 @@
 package com.herokuapp.springoflife.model;
 
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,13 +9,17 @@ public class LifeCycles {
 
   static int counter = 0;
 
-  private static int[][] toLive = new int[Board.size][Board.size];
-  private static int[][] toDead = new int[Board.size][Board.size];
+  Neighbour neighbour = new Neighbour();
+  Board board = new Board();
+  int boardSize = board.array2d().length;
 
-  static int[][] makeThemLive() {
-    for (int i = 0; i < Board.array2d().length; i++) {
-      for (int j = 0; j < Board.array2d().length; j++) {
-        if (Neighbour.checkNeighbours(i, j) == 3) {
+  private int[][] toLive = new int[boardSize][boardSize];
+  private int[][] toDead = new int[boardSize][boardSize];
+
+  int[][] makeThemLive() {
+    for (int i = 0; i < boardSize; i++) {
+      for (int j = 0; j < boardSize; j++) {
+        if (neighbour.checkNeighbours(i, j) == 3) {
           toLive[i][j] = 1;
         } else {
           toLive[i][j] = 0;
@@ -27,12 +29,12 @@ public class LifeCycles {
     return toLive;
   }
 
-  static int[][] makeThemDead() {
-    for (int i = 0; i < Board.array2d().length; i++) {
-      for (int j = 0; j < Board.array2d().length; j++) {
-        if (Neighbour.checkNeighbours(i, j) > 3) {
+  int[][] makeThemDead() {
+    for (int i = 0; i < boardSize; i++) {
+      for (int j = 0; j < boardSize; j++) {
+        if (neighbour.checkNeighbours(i, j) > 3) {
           toDead[i][j] = 0;
-        } else if (Neighbour.checkNeighbours(i, j) < 2) {
+        } else if (neighbour.checkNeighbours(i, j) < 2) {
           toDead[i][j] = 0;
         } else {
           toDead[i][j] = 1;
@@ -42,17 +44,17 @@ public class LifeCycles {
     return toDead;
   }
 
-  static void lifeCycle() {
+  void lifeCycle() {
     makeThemLive();
     makeThemDead();
-    for (int i = 0; i < Board.array2d().length; i++) {
-      for (int j = 0; j < Board.array2d().length; j++) {
+    for (int i = 0; i < boardSize; i++) {
+      for (int j = 0; j < boardSize; j++) {
 
         if (toLive[i][j] == 1 && toDead[i][j] == 1) {
-          Board.setAlive(i, j);
+          board.setAlive(i, j);
         }
         if (toLive[i][j] == 0 && toDead[i][j] == 0) {
-          Board.setDead(i, j);
+          board.setDead(i, j);
         }
       }
     }

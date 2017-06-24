@@ -1,13 +1,14 @@
 package com.herokuapp.springoflife.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
 
   @GetMapping("/")
-  public String mainpage(){
+  public String mainpage(Model model) {
     return "index";
   }
 

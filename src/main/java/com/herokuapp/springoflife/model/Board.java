@@ -2,14 +2,14 @@ package com.herokuapp.springoflife.model;
 
 public class Board {
 
-  static final int size = 200;
-  static int[][] multi = new int[size][size];
+  final int size = 200;
+  int[][] multi = new int[size][size];
 
-  static void setDead(int posX, int posY) {
+  void setDead(int posX, int posY) {
     multi[posX][posY] = 0;
   }
 
-  static void setAlive(int posX, int posY) {
+  void setAlive(int posX, int posY) {
     multi[posX][posY] = 1;
   }
 
@@ -26,11 +26,11 @@ public class Board {
     }
   }
 
-  static int[][] array2d() {
+  public int[][] array2d() {
     return multi;
   }
 
-  static String arrayToString() {
+  String arrayToString() {
     String map = "";
     for (int[] aMulti : multi) {
       for (int j = 0; j < multi.length; j++) {
@@ -40,6 +40,4 @@ public class Board {
     }
     return map;
   }
-
-
 }
