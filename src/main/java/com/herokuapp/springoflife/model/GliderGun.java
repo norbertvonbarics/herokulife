@@ -1,10 +1,15 @@
 package com.herokuapp.springoflife.model;
 
+import java.io.IOException;
+
 public class GliderGun {
   Board board = new Board();
-  int boardSize = board.array2d().length;
+  int boardSize = board.getMulti()  .length;
 
-  void spacecraft(){
+  public GliderGun() throws IOException {
+  }
+
+  public void spacecraft(){
     for (int i = 0; i < boardSize; i++) {
       for (int j = 0; j < boardSize; j++) {
         board.multi[i][j] = 0;

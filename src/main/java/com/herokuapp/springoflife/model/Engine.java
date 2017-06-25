@@ -1,12 +1,15 @@
 package com.herokuapp.springoflife.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Engine {
 
   private LifeCycles lifecycles = new LifeCycles();
   private ThreadSleep threadSleep = new ThreadSleep();
-  private GliderGun gliderGun = new GliderGun();
+
+  public Engine() throws IOException {
+  }
 
 
   public boolean engine() {
@@ -15,7 +18,6 @@ public class Engine {
     try {
 
       //myArray.fillLists();
-      gliderGun.spacecraft();
 
       threadSleep.sleep();
 

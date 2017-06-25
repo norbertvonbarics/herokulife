@@ -1,9 +1,14 @@
 package com.herokuapp.springoflife.model;
 
+import java.io.IOException;
+
 class Neighbour {
   Board board = new Board();
-  int boardSize = board.array2d().length;
+  int boardSize = board.getMulti().length;
   Alive alive = new Alive();
+
+  Neighbour() throws IOException {
+  }
 
   int checkNeighbours(int posX, int posY) {
     int counter = 0;
@@ -21,7 +26,6 @@ class Neighbour {
         }
       }
     }
-
     return counter;
   }
 }

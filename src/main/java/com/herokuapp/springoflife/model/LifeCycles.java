@@ -1,20 +1,21 @@
 package com.herokuapp.springoflife.model;
-
+import java.io.IOException;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
 public class LifeCycles {
 
   static int counter = 0;
 
   Neighbour neighbour = new Neighbour();
   Board board = new Board();
-  int boardSize = board.array2d().length;
+  int boardSize = board.getMulti().length;
 
   private int[][] toLive = new int[boardSize][boardSize];
   private int[][] toDead = new int[boardSize][boardSize];
+
+  public LifeCycles() throws IOException {
+  }
 
   int[][] makeThemLive() {
     for (int i = 0; i < boardSize; i++) {
