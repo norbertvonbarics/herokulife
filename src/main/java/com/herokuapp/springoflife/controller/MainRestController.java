@@ -11,6 +11,9 @@ public class MainRestController {
 
   @GetMapping("/json")
   public int[][] jsonArray() throws IOException {
+//ez itt egy new comment
+//ez meg egy newabb
+
     Engine engine = new Engine();
     engine.engine();
     Board board = new Board();
